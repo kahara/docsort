@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os, shutil, datetime
+import os, sys, shutil, datetime
 
 class DocSort:
     def __init__(self, source_dir, target_dir, file_age=40320):
@@ -22,8 +22,12 @@ class DocSort:
             dir = dir + '/' + '%02d' % (date.month, )
             if not os.path.exists(dir):
                 os.makedirs(dir)
-            
-            shutil.move(file_name, dir)
+
+            try:
+                shutil.move(file_name, dir)
+            except:
+                e = sys.exc_info()[1]
+                print(str(e))
 
 if __name__ == '__main__':
     dir = os.getcwd()

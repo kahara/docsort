@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-import unittest, time, datetime, tempfile, os, sys, shutil, uuid, random, json, syslog
+import unittest, time, datetime, tempfile, os, sys, shutil, uuid, random, json
 from docsort import DocSort
 
 def suite():
@@ -32,7 +32,7 @@ class DocSortTest(unittest.TestCase):
         self.end_date = self.start_date + datetime.timedelta(7300) # about ten years from now
         #print 'Date from\t', self.start_date, '\nto\t\t', self.end_date
 
-        # xxx create more files closer to the last few months (or something)
+        # xxx create more files closer to the center of the last few months (or something)
         self.count = 10
         self.filetree = {}        
         for i in range(0, self.count):
@@ -69,7 +69,7 @@ class DocSortTest(unittest.TestCase):
                         print mtime
                     except:
                         e = sys.exc_info()[1]
-                        syslog.syslog(str(e))
+                        print(str(e))
                         continue
 
                     print 'Checking %04d %02d %s %d %d' % (yk, mk, ik, iv, mtime)
