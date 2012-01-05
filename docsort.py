@@ -3,7 +3,7 @@
 import os, sys, shutil, datetime
 
 class DocSort:
-    def __init__(self, source_dir, target_dir, file_age):
+    def __init__(self, source_dir, target_dir, age_seconds):
         for f in os.listdir(source_dir):
             
             file_name = source_dir + '/' + f
@@ -15,7 +15,7 @@ class DocSort:
             mtime = int(os.stat(file_name).st_mtime)
             date = datetime.datetime.fromtimestamp(mtime)
 
-            if (datetime.datetime.now() - date) < datetime.timedelta(0, file_age):
+            if (datetime.datetime.now() - date) < datetime.timedelta(0, age_seconds):
                 print 'Skipping', file_name, '(%s)' % (date, )
                 continue
             
