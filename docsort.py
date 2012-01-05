@@ -15,7 +15,7 @@ class DocSort:
             mtime = int(os.stat(file_name).st_mtime)
             date = datetime.datetime.fromtimestamp(mtime)
 
-            if (datetime.datetime.utcnow() - date) < datetime.timedelta(0, file_age):
+            if (datetime.datetime.now() - date) < datetime.timedelta(0, file_age):
                 print 'Skipping', file_name, '(%s)' % (date, )
                 continue
             
